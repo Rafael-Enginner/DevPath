@@ -1,10 +1,10 @@
 # DevPath · Mapa de estudos de Engenharia de Software
 
-![CI](https://github.com/rafaelsggp94-design/DevPath/actions/workflows/ci.yml/badge.svg)
+![CI](https://github.com/rafael-enginner/DevPath/actions/workflows/ci.yml/badge.svg)
 
 Trilha interativa que transforma as disciplinas do curso em prática. Cada tópico traz **conceito, importância, passo a passo, ferramentas, projetos por nível (iniciante, intermediário, sênior) e flashcards**. O progresso fica salvo no navegador.
 
-**Site:** https://rafaelsggp94-design.github.io/DevPath/
+**Site:** https://rafael-enginner.github.io/DevPath/
 
 ## Destaques
 - Navegação em formato de linha de metrô: cada disciplina é uma estação.
