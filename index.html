@@ -2,8 +2,10 @@
 <html lang="pt-BR" data-theme="dark">
 <head>
   <meta charset="utf-8">
+  <!-- Ajusta a largura à tela do celular -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>DevPath · Mapa de estudos de Engenharia de Software</title>
+  <!-- Resumo que aparece nos buscadores -->
   <meta name="description" content="Trilha interativa que transforma as disciplinas de Engenharia de Software em prática: conceitos, ferramentas, projetos por nível e revisão.">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Ccircle cx=%2716%27 cy=%2716%27 r=%269%27 fill=%27none%27 stroke=%27%2338bdf8%27 stroke-width=%276%27/%3E%3C/svg%3E">
   <script>
@@ -18,31 +20,93 @@
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body data-level="all">
+  <!-- Atalho para quem navega por teclado -->
   <a class="skip" href="#content">Pular para o conteúdo</a>
+
+  <!-- Barra lateral: marca, progresso geral e estações da trilha -->
   <aside class="side">
     <div class="brand">DevPath</div>
-    <div class="progress" aria-live="polite"><svg viewBox="0 0 44 44" aria-hidden="true"><circle class="bg" cx="22" cy="22" r="18"/><circle id="ring" class="fg" cx="22" cy="22" r="18"/></svg><p><strong id="pct">0%</strong><span id="count">0 de 20 tópicos</span></p></div>
+    <div class="progress" aria-live="polite">
+      <svg viewBox="0 0 44 44" aria-hidden="true"><circle class="bg" cx="22" cy="22" r="18"/><circle id="ring" class="fg" cx="22" cy="22" r="18"/></svg>
+      <p><strong id="pct">0%</strong><span id="count">0 de 20 tópicos</span></p>
+    </div>
     <nav id="nav" aria-label="Estações da trilha"></nav>
   </aside>
+
   <div class="wrap">
+    <!-- Cabeçalho: busca e preferências -->
     <header class="top">
       <input id="search" type="search" placeholder="Buscar conceito, ferramenta ou projeto" aria-label="Buscar">
+      <button id="prefs-open" type="button" aria-haspopup="dialog">Preferências</button>
       <button id="theme" type="button">Modo escuro</button>
     </header>
+
+    <!-- Filtro de nível dos projetos -->
     <div class="picker" role="group" aria-label="Filtrar projetos por nível">
       <button type="button" data-pick="all" aria-pressed="true">Todos os níveis</button>
       <button type="button" data-pick="ini" aria-pressed="false">Iniciante</button>
       <button type="button" data-pick="mid" aria-pressed="false">Intermediário</button>
       <button type="button" data-pick="sen" aria-pressed="false">Sênior</button>
     </div>
+
     <main>
       <section class="hero">
         <h1>Da sala de aula ao portfólio, estação por estação.</h1>
+        <p id="greeting"></p>
         <p>Cada disciplina do seu curso virou uma parada desta linha. Em cada tópico você aprende o conceito, pratica com ferramentas reais, escolhe um projeto do seu nível e revisa com flashcards.</p>
       </section>
+      <!-- Área preenchida pelo JavaScript -->
       <div id="content" tabindex="-1"></div>
     </main>
   </div>
+
+  <!-- Preferências: perfil opcional, acessibilidade, conteúdo e privacidade -->
+  <dialog id="prefs" aria-labelledby="prefs-title">
+    <form method="dialog">
+      <h2 id="prefs-title">Preferências</h2>
+
+      <fieldset>
+        <legend>Perfil (opcional)</legend>
+        <p class="hint">Fica salvo apenas neste navegador. Nada é enviado a servidores.</p>
+        <label>Nome <input name="name" autocomplete="given-name" maxlength="60"></label>
+        <label>Idade <input name="age" type="number" min="5" max="120" inputmode="numeric"></label>
+        <label>Curso <input name="course" maxlength="80"></label>
+        <label>Instituição de ensino <input name="school" maxlength="80"></label>
+        <label>Tecnologias e APIs que quer praticar <input name="interests" maxlength="120"></label>
+      </fieldset>
+
+      <fieldset>
+        <legend>Acessibilidade</legend>
+        <label>Tamanho do texto <output>100%</output><input type="range" name="scale" min="100" max="150" step="10"></label>
+        <label class="check"><input type="checkbox" name="contrast"> Alto contraste</label>
+        <label class="check"><input type="checkbox" name="font"> Fonte mais legível</label>
+        <label class="check"><input type="checkbox" name="spacing"> Espaçamento ampliado</label>
+        <label class="check"><input type="checkbox" name="motion"> Reduzir animações</label>
+        <label class="check"><input type="checkbox" name="focus"> Foco reforçado</label>
+        <button type="button" data-reset>Restaurar acessibilidade</button>
+      </fieldset>
+
+      <fieldset>
+        <legend>Conteúdo</legend>
+        <p class="hint">Exporte o conteúdo, edite o JSON e importe de volta. A alteração vale só neste navegador.</p>
+        <div class="actions">
+          <button type="button" id="content-export">Exportar JSON</button>
+          <button type="button" id="content-reset">Voltar ao original</button>
+        </div>
+        <label>Importar JSON <input id="content-file" type="file" accept=".json,application/json"></label>
+        <p id="content-msg" role="status"></p>
+      </fieldset>
+
+      <fieldset>
+        <legend>Privacidade</legend>
+        <button type="button" data-erase>Apagar todos os meus dados</button>
+      </fieldset>
+
+      <div class="actions"><button value="close">Fechar</button></div>
+    </form>
+  </dialog>
+
+  <!-- Região lida por leitores de tela (resultados da busca) -->
   <p id="status" class="sr-only" role="status"></p>
   <script type="module" src="js/main.js"></script>
 </body>

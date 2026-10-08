@@ -4,6 +4,8 @@ import { catalog, allTopics, searchTopics } from "../js/catalog.js";
 import { html } from "../js/html.js";
 import { Topic } from "../js/components.js";
 import { LEVELS } from "../js/config.js";
+import { MODULES } from "../js/data.js";
+import { validateModules } from "../js/content.js";
 
 test("todo módulo tem tópicos e dica", () => {
   for (const mod of catalog) {
@@ -36,8 +38,17 @@ test("html escapa valores interpolados", () => {
 });
 
 test("Topic não injeta HTML vindo dos dados", () => {
-  const out = Topic({ ...allTopics[0], name: "<script>x</script>" }, false).safe;
+  const out = Topic({ ...allTopics[0], name: "<script>x</script>" }).safe;
   assert.ok(!out.includes("<script>"));
+});
+
+test("todo tópico tem baralho com 7 cartões", () => {
+  for (const topic of allTopics) assert.equal(topic.cards.length, 7, topic.id);
+});
+
+test("validateModules rejeita estrutura inválida", () => {
+  assert.ok(validateModules([{ id: "x" }]));
+  assert.equal(validateModules(MODULES), null);
 });
 
 test("busca encontra por ferramenta e ignora termo vazio", () => {

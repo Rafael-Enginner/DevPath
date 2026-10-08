@@ -3,7 +3,14 @@ export const STORAGE = {
   progress: "devpath:v1",
   module: "devpath:mod",
   theme: "devpath:theme",
+  prefs: "devpath:prefs",
+  ratings: "devpath:ratings",
+  cards: "devpath:cards",
+  content: "devpath:content",
 };
+
+/** Repositório que recebe os feedbacks (Issues do GitHub). */
+export const REPO = "rafael-enginner/DevPath";
 
 export const TABS = ["Conceito", "Prática", "Projetos", "Fixar"];
 

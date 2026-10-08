@@ -15,4 +15,11 @@ export const storage = {
       /* armazenamento indisponível: o app segue funcionando sem persistência */
     }
   },
+  remove(key) {
+    try {
+      localStorage.removeItem(key);
+    } catch {
+      /* sem armazenamento */
+    }
+  },
 };
