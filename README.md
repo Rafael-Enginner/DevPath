@@ -1,5 +1,7 @@
 # DevPath · Mapa de estudos de Engenharia de Software
 
+![CI](https://github.com/rafael-enginner/DevPath/actions/workflows/ci.yml/badge.svg)
+
 Trilha interativa que transforma as disciplinas do curso em prática. Cada tópico traz **conceito, importância, passo a passo, ferramentas, projetos por nível (iniciante, intermediário, sênior) e flashcards**. O progresso fica salvo no navegador.
 
 **Site:** https://rafael-enginner.github.io/DevPath/
@@ -39,6 +41,9 @@ npm install
 npm run format       # formata com Prettier
 npm run check        # ESLint + testes
 ```
+
+## Segurança
+Veja [SECURITY.md](SECURITY.md) para reportar vulnerabilidades e conhecer as medidas adotadas.
 
 ## Licença
 MIT.
