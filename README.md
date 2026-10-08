@@ -1,46 +1,46 @@
 # DevPath · Mapa de estudos de Engenharia de Software
 
-Trilha interativa que transforma as disciplinas do curso em prática. Cada tópico traz **conceito, por que importa, passo a passo, ferramentas, projetos por nível (iniciante, intermediário, sênior) e flashcards**. O progresso fica salvo no navegador.
+![CI](https://github.com/rafaelsggp94-design/DevPath/actions/workflows/ci.yml/badge.svg)
+
+Trilha interativa que transforma as disciplinas do curso em prática. Cada tópico traz **conceito, importância, passo a passo, ferramentas, projetos por nível (iniciante, intermediário, sênior) e flashcards**. O progresso fica salvo no navegador.
+
+**Site:** https://rafaelsggp94-design.github.io/DevPath/
 
 ## Destaques
 - Navegação em formato de linha de metrô: cada disciplina é uma estação.
 - Conteúdo separado da lógica: para criar ou editar tópicos, altere só `js/data.js`.
+- JavaScript em módulos ES, componentes pequenos e templates com escape automático (sem risco de XSS).
+- Acessibilidade: abas com setas, Home e End, foco visível, link de pular conteúdo, região de status para leitores de tela, `prefers-reduced-motion`.
 - Busca instantânea, tema claro e escuro, progresso persistente.
-- Acessibilidade: abas com teclado (setas), foco visível, link de pular conteúdo, respeito a `prefers-reduced-motion`.
-- HTML, CSS e JavaScript puros, sem dependências nem build.
+- Testes (`node:test`), ESLint, Prettier e CI no GitHub Actions. Sem dependências em produção.
 
 ## Estrutura
 ```
-devpath/
-├── index.html      # estrutura semântica
-├── css/styles.css  # tokens, layout e componentes
-└── js/
-    ├── data.js     # conteúdo (módulos e tópicos)
-    └── app.js      # renderização, estado e eventos
+├── index.html            # estrutura semântica
+├── css/styles.css        # tokens, base, layout, componentes, responsivo
+├── js/
+│   ├── data.js           # conteúdo (módulos e tópicos)
+│   ├── catalog.js        # enriquece os dados e faz a busca
+│   ├── components.js     # funções que geram o HTML
+│   ├── html.js           # template tag com escape
+│   ├── tabs.js · theme.js · storage.js · config.js
+│   └── main.js           # estado, eventos e renderização
+├── tests/data.test.js
+└── .github/workflows/ci.yml
 ```
 
 ## Rodar localmente
-Abra `index.html` no navegador, ou use `npx serve .` / extensão Live Server.
-
-## Publicar no GitHub
+Módulos ES não abrem com duplo clique em `index.html`. Use um servidor local:
 ```bash
-git init
-git add .
-git commit -m "feat: primeira versão do DevPath"
-git branch -M main
-git remote add origin https://github.com/SEU-USUARIO/devpath.git
-git push -u origin main
+npm start            # ou: npx serve .
 ```
-Depois: **Settings → Pages → Deploy from a branch → main / root**.
 
-## Padrão de commits sugerido
-`feat:` novidade · `fix:` correção · `docs:` documentação · `style:` visual · `refactor:` reorganização
-
-## Próximos passos
-- [ ] Quiz de múltipla escolha por módulo
-- [ ] Exportar progresso em JSON
-- [ ] Testes com Playwright e workflow no GitHub Actions
-- [ ] Migrar para TypeScript e Vite
+## Qualidade
+```bash
+npm install
+npm run format       # formata com Prettier
+npm run check        # ESLint + testes
+```
 
 ## Licença
-MIT. Ajuste o nome em `LICENSE`.
+MIT.

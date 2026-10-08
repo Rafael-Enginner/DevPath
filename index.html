@@ -5,9 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>DevPath · Mapa de estudos de Engenharia de Software</title>
   <meta name="description" content="Trilha interativa que transforma as disciplinas de Engenharia de Software em prática: conceitos, ferramentas, projetos por nível e revisão.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Ccircle cx=%2716%27 cy=%2716%27 r=%269%27 fill=%27none%27 stroke=%27%2338bdf8%27 stroke-width=%276%27/%3E%3C/svg%3E">
+  <script>
+    /* Roda antes da pintura para evitar flash de tema. A alternância fica em js/theme.js */
+    (function () {
+      var t = null;
+      try { t = JSON.parse(localStorage.getItem("devpath:theme")); } catch (e) { /* sem tema salvo */ }
+      if (t !== "light" && t !== "dark") t = matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+      document.documentElement.dataset.theme = t;
+    })();
+  </script>
   <link rel="stylesheet" href="css/styles.css">
 </head>
-<body>
+<body data-level="all">
   <a class="skip" href="#content">Pular para o conteúdo</a>
   <aside class="side">
     <div class="brand">DevPath</div>
@@ -17,8 +27,14 @@
   <div class="wrap">
     <header class="top">
       <input id="search" type="search" placeholder="Buscar conceito, ferramenta ou projeto" aria-label="Buscar">
-      <button id="theme" type="button" aria-label="Alternar tema claro e escuro">Tema</button>
+      <button id="theme" type="button">Modo escuro</button>
     </header>
+    <div class="picker" role="group" aria-label="Filtrar projetos por nível">
+      <button type="button" data-pick="all" aria-pressed="true">Todos os níveis</button>
+      <button type="button" data-pick="ini" aria-pressed="false">Iniciante</button>
+      <button type="button" data-pick="mid" aria-pressed="false">Intermediário</button>
+      <button type="button" data-pick="sen" aria-pressed="false">Sênior</button>
+    </div>
     <main>
       <section class="hero">
         <h1>Da sala de aula ao portfólio, estação por estação.</h1>
@@ -27,7 +43,7 @@
       <div id="content" tabindex="-1"></div>
     </main>
   </div>
-  <script src="js/data.js"></script>
-  <script src="js/app.js"></script>
+  <p id="status" class="sr-only" role="status"></p>
+  <script type="module" src="js/main.js"></script>
 </body>
 </html>
