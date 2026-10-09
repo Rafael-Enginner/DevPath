@@ -1,7 +1,7 @@
 /* Conteúdo da trilha. Para adicionar um tópico, basta incluir um objeto em `topics`.
    Campos: name, kw (palavras-chave), what, why, how[] (passos), tools[], projects{ini,mid,sen}, q, a */
 export const MODULES = [
-{ id:"comp", name:"Teoria geral da computação", color:"#38bdf8",
+{ id:"comp", name:"Teoria geral da computação", color:"#5aa9d6",
   tip:"Todo software, do mais simples ao mais complexo, é entrada, processamento e saída. Domine isso e o resto fica leve.",
   topics:[
   { name:"IN / PROC / OUT", kw:"Entrada, Processamento, Saída, Condicionais, Laços, Subprogramas, Intenção, Ato, Agente",
@@ -49,7 +49,7 @@ export const MODULES = [
     },
     q:"O que é abstração?", a:"Esconder detalhes que não importam agora para focar no que resolve o problema." }
 ]},
-{ id:"eng", name:"Engenharia de Software", color:"#a78bfa",
+{ id:"eng", name:"Engenharia de Software", color:"#9b8ad8",
   tip:"Engenharia é o que separa um código que funciona hoje de um produto que sobrevive por anos.",
   topics:[
   { name:"Mapa SWEBOK", kw:"Requisitos, Design, Construção, Teste, Manutenção, Configuração, Gestão, Processos, Qualidade",
@@ -97,7 +97,7 @@ export const MODULES = [
     },
     q:"O que mede um nível de maturidade?", a:"O quanto os processos são definidos, repetíveis e melhorados continuamente." }
 ]},
-{ id:"ux", name:"Experiência do Usuário (UX)", color:"#f472b6",
+{ id:"ux", name:"Experiência do Usuário (UX)", color:"#d77fae",
   tip:"Software que ninguém entende é software que ninguém usa. Teste com gente real, sempre.",
   topics:[
   { name:"Nielsen, Norman e Bastien", kw:"Interação HC, Motor ágil, ISO 9241, Ergonomia, Affordance, 10 Heurísticas, Coleta triangulada, Sprints",
@@ -145,7 +145,7 @@ export const MODULES = [
     },
     q:"Formativa ou somativa: qual acontece durante o design?", a:"A formativa, para corrigir o rumo. A somativa mede o resultado final." }
 ]},
-{ id:"front", name:"Desenvolvimento Front End", color:"#34d399",
+{ id:"front", name:"Desenvolvimento Front End", color:"#54b894",
   tip:"O front-end é onde o usuário encontra o seu trabalho. Semântica e acessibilidade vêm antes do enfeite.",
   topics:[
   { name:"HTML semântico", kw:"Tags de conteúdo, Estrutura hierárquica do documento, Formulários, validação",
@@ -193,7 +193,7 @@ export const MODULES = [
     },
     q:"O que significa POUR no WCAG?", a:"Perceptível, operável, compreensível e robusto." }
 ]},
-{ id:"ops", name:"Estrutura DevOps, hiperautomação e IoT", color:"#fbbf24",
+{ id:"ops", name:"Estrutura DevOps, hiperautomação e IoT", color:"#d7a94a",
   tip:"Código só gera valor quando chega ao usuário. Automatize tudo que você faz mais de duas vezes.",
   topics:[
   { name:"Pipeline DevOps e CI/CD", kw:"Requisitos, Arquitetura, Construção, Teste, Controle de versão, Deploy, Correção, Monitoramento",

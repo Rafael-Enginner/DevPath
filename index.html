@@ -5,12 +5,14 @@
   <!-- Política de segurança: só carrega scripts, estilos e imagens do próprio site -->
   <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; style-src-attr 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; manifest-src 'self'; base-uri 'none'">
   <!-- Ajusta a largura à tela do celular -->
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>DevPath · Mapa de estudos de Engenharia de Software</title>
   <!-- Resumo que aparece nos buscadores -->
   <meta name="description" content="Trilha interativa que transforma as disciplinas de Engenharia de Software em prática: conceitos, ferramentas, projetos por nível e revisão.">
   <link rel="canonical" href="https://rafael-enginner.github.io/DevPath/">
-  <meta name="theme-color" content="#0d1120">
+  <meta name="color-scheme" content="dark light">
+  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0d1120">
+  <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f3f5fb">
   <!-- Pré-visualização ao compartilhar o link (LinkedIn, WhatsApp, X) -->
   <meta property="og:type" content="website">
   <meta property="og:locale" content="pt_BR">
@@ -64,10 +66,24 @@
         <h1>Da sala de aula ao portfólio, estação por estação.</h1>
         <p id="greeting"></p>
         <p>Cada disciplina do seu curso virou uma parada desta linha. Em cada tópico você aprende o conceito, pratica com ferramentas reais, escolhe um projeto do seu nível e revisa com flashcards.</p>
+        <svg class="line" viewBox="0 0 600 40" aria-hidden="true" focusable="false">
+          <path d="M30 20H570" stroke="currentColor" stroke-opacity=".25" stroke-width="4" stroke-linecap="round"/>
+          <circle cx="30" cy="20" r="9" fill="var(--bg)" stroke="#5aa9d6" stroke-width="4"/>
+          <circle cx="165" cy="20" r="9" fill="var(--bg)" stroke="#9b8ad8" stroke-width="4"/>
+          <circle cx="300" cy="20" r="9" fill="var(--bg)" stroke="#d77fae" stroke-width="4"/>
+          <circle cx="435" cy="20" r="9" fill="var(--bg)" stroke="#54b894" stroke-width="4"/>
+          <circle cx="570" cy="20" r="9" fill="var(--bg)" stroke="#d7a94a" stroke-width="4"/>
+        </svg>
       </section>
       <!-- Área preenchida pelo JavaScript -->
       <div id="content" tabindex="-1"></div>
     </main>
+
+    <!-- Rodapé: autoria, código aberto e privacidade -->
+    <footer class="foot">
+      <p>DevPath · feito por Rafael · licença MIT</p>
+      <p>Seus dados ficam só neste navegador. <a href="https://github.com/rafael-enginner/DevPath" rel="noopener">Código no GitHub</a> · <a href="https://github.com/rafael-enginner/DevPath/blob/main/SECURITY.md" rel="noopener">Segurança</a></p>
+    </footer>
   </div>
 
   <!-- Preferências: perfil opcional, acessibilidade, conteúdo e privacidade -->
@@ -122,6 +138,8 @@
 
   <!-- Região lida por leitores de tela (resultados da busca) -->
   <p id="status" class="sr-only" role="status"></p>
+  <!-- Avisos discretos (ex.: tópico concluído) -->
+  <p id="toast" class="toast" role="status"></p>
   <script type="module" src="js/main.js"></script>
 </body>
 </html>

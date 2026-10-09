@@ -6,6 +6,7 @@ import { html, render } from "./html.js";
 import { NavItem, ModuleHeader, SearchSummary, Topic, doneLabel } from "./components.js";
 import { selectTab, onTabKeydown } from "./tabs.js";
 import { initTheme } from "./theme.js";
+import { toast } from "./toast.js";
 import { initPreferences } from "./preferences.js";
 import { initContentTools, validateModules } from "./content.js";
 import { MIGRATIONS, SCHEMA_VERSION } from "./migrations.js";
@@ -61,6 +62,12 @@ function renderContent() {
   render(els.content, html`${ModuleHeader(mod)}${mod.topics.map((t) => Topic(t, viewOf(t)))}`);
 }
 
+/** Entrada suave só ao trocar de módulo (nunca ao digitar na busca). */
+function animateEntrance() {
+  els.content.classList.add("enter");
+  setTimeout(() => els.content.classList.remove("enter"), 500);
+}
+
 function showCard(deck, topic, index) {
   const card = deck.querySelector(".flash");
   card.dataset.i = index;
@@ -78,6 +85,7 @@ const actions = {
     els.search.value = "";
     storage.write(STORAGE.module, state.module);
     renderNav();
+    animateEntrance();
     renderContent();
     els.content.focus({ preventScroll: true });
     window.scrollTo({ top: 0 });
@@ -88,6 +96,7 @@ const actions = {
     storage.write(STORAGE.progress, state.done);
     el.setAttribute("aria-pressed", String(state.done[id]));
     el.textContent = doneLabel(state.done[id]);
+    toast(state.done[id] ? "Tópico concluído" : "Conclusão desfeita");
     renderNav();
   },
   rate(el) {
@@ -159,4 +168,5 @@ initContentTools({
   modules,
 });
 renderNav();
+animateEntrance();
 renderContent();

@@ -35,6 +35,9 @@ Trilha interativa que transforma as disciplinas do curso em prática. Cada tópi
 └── .github/workflows/ci.yml
 ```
 
+## Fonte personalizada (opcional)
+O visual usa fontes do sistema. Para ativar a Geist, baixe `Geist-Variable.woff2`, coloque em `assets/fonts/` e descomente o bloco `@font-face` no início de `css/styles.css`. A política de segurança só aceita fontes do próprio site.
+
 ## Rodar localmente
 Módulos ES não abrem com duplo clique em `index.html`. Use um servidor local:
 ```bash

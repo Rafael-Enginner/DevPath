@@ -4,9 +4,18 @@ import { LEVELS, REPO, TABS } from "./config.js";
 export const doneLabel = (isDone) => (isDone ? "Concluído" : "Marcar como concluído");
 
 /* ---------- Navegação e cabeçalhos ---------- */
+const svg = (d) => html`<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">${{ safe: d }}</svg>`;
+const ICONS = {
+  comp: svg('<rect x="6" y="6" width="12" height="12" rx="2"/><path d="M9 2v4M15 2v4M9 18v4M15 18v4M2 9h4M2 15h4M18 9h4M18 15h4"/>'),
+  eng: svg('<path d="M12 3l9 5-9 5-9-5z"/><path d="M3 13l9 5 9-5"/>'),
+  ux: svg('<path d="M5 3l14 7-6 2-2 6z"/>'),
+  front: svg('<path d="M9 7l-5 5 5 5M15 7l5 5-5 5"/>'),
+  ops: svg('<path d="M20 12a8 8 0 1 1-3-6.2M20 4v5h-5"/>'),
+};
+const DOT = svg('<circle cx="12" cy="12" r="3"/>');
 export const NavItem = (mod, current, doneCount) => html`
   <button class="stop" style="--c:${mod.color}" data-mod="${mod.id}" aria-current="${mod.id === current}">
-    <i></i>
+    <i>${ICONS[mod.id] ?? DOT}</i>
     <span>${mod.name}<small>${doneCount} de ${mod.topics.length} concluídos</small></span>
   </button>`;
 
