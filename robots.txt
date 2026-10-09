@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://rafael-enginner.github.io/DevPath/sitemap.xml

@@ -6,6 +6,10 @@ Trilha interativa que transforma as disciplinas do curso em prática. Cada tópi
 
 **Site:** https://rafael-enginner.github.io/DevPath/
 
+![DevPath no computador](assets/screenshot.png)
+
+<img src="assets/screenshot-mobile.png" alt="DevPath no celular" width="280">
+
 ## Destaques
 - Navegação em formato de linha de metrô: cada disciplina é uma estação.
 - Conteúdo separado da lógica: para criar ou editar tópicos, altere só `js/data.js`.
@@ -25,7 +29,9 @@ Trilha interativa que transforma as disciplinas do curso em prática. Cada tópi
 │   ├── html.js           # template tag com escape
 │   ├── tabs.js · theme.js · storage.js · config.js
 │   └── main.js           # estado, eventos e renderização
-├── tests/data.test.js
+├── assets/               # imagens, ícones e capturas de tela
+├── docs/adr/             # decisões de arquitetura
+├── tests/                # unitários (node:test) e e2e (Playwright)
 └── .github/workflows/ci.yml
 ```
 
@@ -39,7 +45,8 @@ npm start            # ou: npx serve .
 ```bash
 npm install
 npm run format       # formata com Prettier
-npm run check        # ESLint + testes
+npm run check        # ESLint + testes unitários
+npm run test:e2e     # testes de navegador (Playwright + axe)
 ```
 
 ## Segurança

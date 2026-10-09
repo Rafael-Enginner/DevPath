@@ -8,9 +8,12 @@ import { selectTab, onTabKeydown } from "./tabs.js";
 import { initTheme } from "./theme.js";
 import { initPreferences } from "./preferences.js";
 import { initContentTools, validateModules } from "./content.js";
+import { MIGRATIONS, SCHEMA_VERSION } from "./migrations.js";
 
 const $ = (selector) => document.querySelector(selector);
 const els = { nav: $("#nav"), content: $("#content"), search: $("#search"), status: $("#status"), ring: $("#ring") };
+
+storage.migrate(STORAGE.schema, SCHEMA_VERSION, MIGRATIONS);
 
 /* Conteúdo: usa o JSON importado pelo usuário, se for válido; senão, o conteúdo original. */
 const imported = storage.read(STORAGE.content, null);

@@ -7,6 +7,7 @@ export const STORAGE = {
   ratings: "devpath:ratings",
   cards: "devpath:cards",
   content: "devpath:content",
+  schema: "devpath:schema",
 };
 
 /** Repositório que recebe os feedbacks (Issues do GitHub). */
