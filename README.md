@@ -57,3 +57,8 @@ Veja [SECURITY.md](SECURITY.md) para reportar vulnerabilidades e conhecer as med
 
 ## Licença
 MIT.
+
+
+## Biblioteca de conhecimento (opcional)
+
+O DevPath inclui uma implementação inicial da biblioteca de PDFs com Supabase e geração de conteúdo via Gemini API. Para configurar banco, autenticação, upload privado, funções de backend e publicação revisada, siga [`docs/BIBLIOTECA-IA.md`](docs/BIBLIOTECA-IA.md). A integração fica desativada até preencher `SUPABASE_URL` e `SUPABASE_ANON_KEY` em `js/config.js` e implantar as funções.

@@ -20,3 +20,8 @@ export const LEVELS = [
   { key: "mid", label: "Intermediário", color: "#d7a94a" },
   { key: "sen", label: "Sênior", color: "#d77fae" },
 ];
+
+
+/** Configuração pública do Supabase. A chave anon é pública; nunca coloque service_role ou chave de IA aqui. */
+export const SUPABASE_URL = "";
+export const SUPABASE_ANON_KEY = "";

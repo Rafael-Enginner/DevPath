@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <!-- Política de segurança: só carrega scripts, estilos e imagens do próprio site -->
-  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; style-src-attr 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; manifest-src 'self'; base-uri 'none'">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; style-src-attr 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://*.supabase.co https://generativelanguage.googleapis.com; manifest-src 'self'; base-uri 'none'">
   <!-- Ajusta a largura à tela do celular -->
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>DevPath · Mapa de estudos de Engenharia de Software</title>
@@ -49,6 +49,7 @@
     <!-- Cabeçalho: busca e preferências -->
     <header class="top">
       <input id="search" type="search" placeholder="Buscar conceito ou ferramenta" aria-label="Buscar">
+      <button id="library-open" type="button" aria-haspopup="dialog">Biblioteca de livros</button>
       <button id="prefs-open" type="button" aria-haspopup="dialog">Preferências</button>
       <button id="theme" type="button">Modo escuro</button>
     </header>
@@ -82,7 +83,7 @@
     <!-- Rodapé: autoria, código aberto e privacidade -->
     <footer class="foot">
       <p>DevPath · feito por Rafael · licença MIT</p>
-      <p>Seus dados ficam só neste navegador. <a href="https://github.com/rafael-enginner/DevPath" rel="noopener">Código no GitHub</a> · <a href="https://github.com/rafael-enginner/DevPath/blob/main/SECURITY.md" rel="noopener">Segurança</a></p>
+      <p>Seu progresso pessoal fica neste navegador. A biblioteca de livros usa serviços externos quando configurada. <a href="docs/BIBLIOTECA-IA.md">Configuração da biblioteca</a> · <a href="https://github.com/rafael-enginner/DevPath" rel="noopener">Código no GitHub</a> · <a href="https://github.com/rafael-enginner/DevPath/blob/main/SECURITY.md" rel="noopener">Segurança</a></p>
     </footer>
   </div>
 
@@ -134,6 +135,34 @@
 
       <div class="actions"><button value="close">Fechar</button></div>
     </form>
+  </dialog>
+
+  <!-- Biblioteca de conhecimento: requer Supabase configurado e conta autorizada -->
+  <dialog id="library-dialog" aria-labelledby="library-title" class="library-dialog">
+    <div class="library-heading"><div><h2 id="library-title">Biblioteca de conhecimento</h2><p class="hint">Importe PDFs e gere materiais didáticos com referências às fontes.</p></div><button type="button" data-close-library aria-label="Fechar biblioteca">Fechar</button></div>
+    <p id="library-status" role="status" class="library-status"></p>
+    <section aria-labelledby="library-public-title"><h3 id="library-public-title">Materiais disponíveis para estudantes</h3><div id="library-public-content" class="library-list"><p class="hint">Configure a biblioteca para carregar os materiais.</p></div></section>
+    <section id="library-login-panel">
+      <h3>Entrar como administrador</h3>
+      <p class="hint">Somente contas autorizadas podem enviar livros e solicitar geração de conteúdo.</p>
+      <form id="library-login" class="library-form">
+        <label>E-mail <input name="email" type="email" autocomplete="username" required></label>
+        <label>Senha <input name="password" type="password" autocomplete="current-password" required></label>
+        <button type="submit">Entrar</button>
+      </form>
+    </section>
+    <section id="library-admin-panel" hidden>
+      <div class="library-heading"><h3>Importar PDFs</h3><button id="library-logout" type="button">Sair</button></div>
+      <form id="library-upload" class="library-form">
+        <label>Selecione um ou vários PDFs (até 20 MB por arquivo)
+          <input id="library-pdfs" type="file" accept="application/pdf,.pdf" multiple required>
+        </label>
+        <button type="submit">Enviar arquivos</button>
+      </form>
+      <h3>Livros importados</h3><div id="library-books" class="library-list"><p class="hint">Entre para carregar a biblioteca.</p></div>
+      <h3>Rascunhos para revisão</h3><div id="library-generated" class="library-list"><p class="hint">Os conteúdos gerados aparecerão aqui para revisão.</p></div>
+    </section>
+    <div class="actions"><button type="button" data-close-library>Fechar</button></div>
   </dialog>
 
   <!-- Região lida por leitores de tela (resultados da busca) -->

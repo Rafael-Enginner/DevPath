@@ -1,0 +1,10 @@
+project_id = "devpath"
+
+[functions.process-book]
+verify_jwt = true
+
+[functions.generate-content]
+verify_jwt = true
+
+[functions.publish-content]
+verify_jwt = true

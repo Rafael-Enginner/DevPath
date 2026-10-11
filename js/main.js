@@ -10,6 +10,7 @@ import { toast } from "./toast.js";
 import { initPreferences } from "./preferences.js";
 import { initContentTools, validateModules } from "./content.js";
 import { MIGRATIONS, SCHEMA_VERSION } from "./migrations.js";
+import { initLibraryUI } from "./library-ui.js";
 
 const $ = (selector) => document.querySelector(selector);
 const els = { nav: $("#nav"), content: $("#content"), search: $("#search"), status: $("#status"), ring: $("#ring") };
@@ -153,6 +154,8 @@ els.search.addEventListener("input", (event) => {
 
 /* ---------- Inicialização ---------- */
 initTheme($("#theme"));
+initLibraryUI();
+document.querySelectorAll("[data-close-library]").forEach((button) => button.addEventListener("click", () => $("#library-dialog").close()));
 initPreferences({
   dialog: $("#prefs"),
   openButton: $("#prefs-open"),
